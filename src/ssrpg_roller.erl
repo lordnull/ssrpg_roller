@@ -69,7 +69,17 @@ main(Opts) ->
 				io:format("~s: ~p~n", [K, V])
 			end, Props);
 		_ ->
-			getopt:usage(?opt_specs, "ssrpg_roller")
+			getopt:usage(?opt_specs, "ssrpg_roller"),
+			io:format("~n"
+				"The dice are represented using color~n"
+				"    u: boost (blue)~n"
+				"    g: ability (green)~n"
+				"    y: proficiency (yellow)~n"
+				"    b: setback (black)~n"
+				"    p: difficulty (purple)~n"
+				"    r: challenge (red)~n"
+				"~n"
+				"So yggprb is 1 profciency, 2 ability, 1 difficulty, 1 challenge, and 1 setback die.~n")
 	end.
 
 avg_threat(List) ->
