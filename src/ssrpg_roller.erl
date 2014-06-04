@@ -42,14 +42,18 @@ main(Opts) ->
 				{"Fail 50%", m:fail_percentile(FullResList, 50)},
 				{"Fail 80%", m:fail_percentile(FullResList, 80)},
 				{"Fail max", m:fail_percentile(FullResList, 100)},
+				{"Threat %", m:threat_percent(FullResList)},
 				{"Threat Mean", m:threat_mean(FullResList)},
 				{"Threat 50%", m:threat_percentile(FullResList, 50)},
 				{"Threat 80%", m:threat_percentile(FullResList, 80)},
 				{"Threat max", m:threat_percentile(FullResList, 100)},
+				{"Advantage %", m:advantage_percent(FullResList)},
 				{"Advantage Mean", m:advantage_mean(FullResList)},
 				{"Advantage 50%", m:advantage_percentile(FullResList, 50)},
 				{"Advantage 80%", m:advantage_percentile(FullResList, 80)},
-				{"Advantage max", m:advantage_percentile(FullResList, 100)}
+				{"Advantage max", m:advantage_percentile(FullResList, 100)},
+				{"Triumph %", m:triumph_percent(FullResList)},
+				{"Despair %", m:despair_percent(FullResList)}
 			],
 			lists:foreach(fun({K, V}) ->
 				io:format("~s: ~p~n", [K, V])

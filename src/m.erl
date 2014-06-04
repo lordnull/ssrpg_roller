@@ -7,8 +7,9 @@
 	success_percent/1,
 	success_mean/1, success_percentile/2,
 	fail_mean/1, fail_percentile/2,
-	threat_mean/1, threat_percentile/2,
-	advantage_mean/1, advantage_percentile/2
+	threat_percent/1, threat_mean/1, threat_percentile/2,
+	advantage_percent/1, advantage_mean/1, advantage_percentile/2,
+	triumph_percent/1, despair_percent/1
 ]).
 
 success_percent(ResList) ->
@@ -58,6 +59,15 @@ fail_percentile(ResList, Percentile) ->
 			percentile(Fails, Percentile)
 	end.
 
+threat_percent(ResList) ->
+	Threats = [X || X <- ResList, r:threats(X) > 0],
+	case Threats of
+		[] ->
+			0;
+		_ ->
+			(length(Threats) / length(ResList) ) * 100
+	end.
+
 threat_mean(ResList) ->
 	Threats = [r:threats(X) || X <- ResList, r:threats(X) > 0],
 	case Threats of
@@ -77,6 +87,15 @@ threat_percentile(ResList, Percentile) ->
 			percentile(Threats, Percentile)
 	end.
 
+advantage_percent(ResList) ->
+	Advans = [X || X <- ResList, r:advantages(X) > 0],
+	case Advans of
+		[] ->
+			0;
+		_ ->
+			(length(Advans) / length(ResList) ) * 100
+	end.
+
 advantage_mean(ResList) ->
 	Advans = [r:advantages(X) || X <- ResList, r:advantages(X) > 0],
 	case Advans of
@@ -94,6 +113,24 @@ advantage_percentile(ResList, Percentile) ->
 			0;
 		_ ->
 			percentile(Advans, Percentile)
+	end.
+
+triumph_percent(ResList) ->
+	Tris = [X || X <- ResList, r:triumphs(X) > 0],
+	case Tris of
+		[] ->
+			0;
+		_ ->
+			(length(Tris) / length(ResList)) * 100
+	end.
+
+despair_percent(ResList) ->
+	Des = [X || X <- ResList, r:despairs(X) > 0],
+	case Des of
+		[] ->
+			0;
+		_ ->
+			(length(Des) / length(ResList)) * 100
 	end.
 
 percentile(Numbers, Percentile) ->
