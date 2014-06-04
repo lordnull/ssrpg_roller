@@ -1,0 +1,12 @@
+{application, ssrpg_roller,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { ssrpg_roller_app, []}},
+  {env, []}
+ ]}.

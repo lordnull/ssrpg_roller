@@ -9,13 +9,13 @@
 -define(light_point, $l).
 -define(dark_point, $m).
 
--define(boost_die, $u).
--define(ability_die, $g).
--define(proficiency_die, $y).
+-define(boost_die, $b).
+-define(ability_die, $a).
+-define(proficiency_die, $p).
 
--define(setback_die, $b).
--define(difficulty_die, $p).
--define(challenge_die, $r).
+-define(setback_die, $s).
+-define(difficulty_die, $d).
+-define(challenge_die, $c).
 
 -define(force_die, $w).
 
